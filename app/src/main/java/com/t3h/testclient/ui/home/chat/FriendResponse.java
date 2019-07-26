@@ -1,8 +1,8 @@
-package com.t3h.testclient;
+package com.t3h.testclient.ui.home.chat;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class FriendResponse {
+public class FriendResponse implements Serializable {
     private int id;
     private int friendId;
     private String friendUsername;

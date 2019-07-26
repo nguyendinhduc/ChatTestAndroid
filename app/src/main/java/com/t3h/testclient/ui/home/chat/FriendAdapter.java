@@ -1,4 +1,4 @@
-package com.t3h.testclient;
+package com.t3h.testclient.ui.home.chat;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.t3h.testclient.GlideApp;
+import com.t3h.testclient.R;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.HolderFriend> {
     private IFriend inter;
@@ -23,7 +26,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.HolderFrie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderFriend holderFriend, int i) {
+    public void onBindViewHolder(@NonNull final HolderFriend holderFriend, int i) {
         FriendResponse data = inter.getItem(i);
         GlideApp.with(holderFriend.ivAvatar)
                 .load(data.getFriendAvatar())
@@ -34,6 +37,12 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.HolderFrie
         holderFriend.tvName.setText(
                 data.getFriendName()
         );
+        holderFriend.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inter.onClickItem(holderFriend.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -44,6 +53,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.HolderFrie
     public interface IFriend{
         int getCount();
         FriendResponse getItem(int position);
+        void onClickItem(int position);
     }
 
     static class HolderFriend extends RecyclerView.ViewHolder{

@@ -1,4 +1,4 @@
-package com.t3h.testclient;
+package com.t3h.testclient.ui.home.chat;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

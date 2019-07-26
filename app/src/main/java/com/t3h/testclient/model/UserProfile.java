@@ -1,11 +1,11 @@
-package com.t3h.testclient;
+package com.t3h.testclient.model;
 
 public class UserProfile {
     private int id;
     private String username;
     private String password;
     private String avatar;
-    private long createdTime;
+    private String createdTime;
 
     public int getId() {
         return id;
@@ -39,11 +39,11 @@ public class UserProfile {
         this.avatar = avatar;
     }
 
-    public long getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(long createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 }

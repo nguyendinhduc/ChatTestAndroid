@@ -1,8 +1,11 @@
-package com.t3h.testclient;
+package com.t3h.testclient.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.t3h.testclient.ui.home.chat.ChatFunFragment;
+import com.t3h.testclient.R;
 
 public class HomeActivity extends AppCompatActivity {
     @Override

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_back_white_48dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/cake" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:text="Nguyen Van A"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layoutDirection="rtl">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="12dp"
+                android:id="@+id/btn_send"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_send_black_48dp" />
+
+            <EditText
+                android:id="@+id/edt_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/bg_edt"
+                android:hint="Typing content"
+                android:minHeight="48dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="18dp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll"
+            android:layout_marginBottom="4dp" />
+    </RelativeLayout>
+</LinearLayout>

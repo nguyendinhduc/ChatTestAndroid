@@ -1,5 +1,6 @@
-package com.t3h.testclient;
+package com.t3h.testclient.ui.home.chat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.t3h.testclient.R;
+import com.t3h.testclient.interact.Common;
+import com.t3h.testclient.interact.CommonData;
+import com.t3h.testclient.interact.UserService;
+import com.t3h.testclient.ui.chat.ChatActivity;
 
 import java.util.List;
 
@@ -22,6 +29,7 @@ public class FriendFragment extends Fragment implements FriendAdapter.IFriend {
     private RecyclerView rcFriend;
     private List<FriendResponse> friendResponses;
     private FriendAdapter adapter;
+    private  UserService userService;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,13 +48,10 @@ public class FriendFragment extends Fragment implements FriendAdapter.IFriend {
     }
 
     private void getAllFriend(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.91:8080")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        UserService userService =
-                retrofit.create(UserService.class);
-        userService.getAllFriend(2)
+       userService = Common.getUserService();
+        userService.getAllFriend(
+                CommonData.getInstance()
+                        .getUserProfile().getId())
                 .enqueue(new Callback<List<FriendResponse>>() {
                     @Override
                     public void onResponse(Call<List<FriendResponse>> call, Response<List<FriendResponse>> response) {
@@ -72,5 +77,15 @@ public class FriendFragment extends Fragment implements FriendAdapter.IFriend {
     @Override
     public FriendResponse getItem(int position) {
         return friendResponses.get(position);
+    }
+
+    @Override
+    public void onClickItem(int position) {
+        Intent intent = new Intent();
+        intent.setClass(getContext(),
+                ChatActivity.class);
+        intent.putExtra("FRIEND",
+                friendResponses.get(position));
+        startActivity(intent);
     }
 }
